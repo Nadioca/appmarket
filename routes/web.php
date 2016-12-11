@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 //controladores
 //Route::get('Producto','Producto\ProductoController@index');
-Route::resource('Marca','Producto\MarcaController');
+Route::resource('marcas','Producto\MarcaController');
 Route::resource('productos','Producto\ProductoController');
 
 //vistas
@@ -29,13 +29,7 @@ Route::get('reportes','Desktop\Administrador@reportes');
 //blades y bootstrap
 Route::get('dashboards','Desktop\DashboardsController@index');
 
-Route::get('marcas','Producto\MarcaController@index');
-
 //rutas de autenticacion
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

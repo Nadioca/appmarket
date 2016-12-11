@@ -5,7 +5,7 @@
 @section('content')
 
    <div class="page-header" style="margin-top:70px">
-     <h1 style="text-align: center;">Lista de Productos</h1>
+     <h1>Lista de Productos</h1>
    </div>
 
    <div class="row">

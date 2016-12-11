@@ -4,6 +4,8 @@ namespace Market\Http\Controllers\Producto;
 
 use Illuminate\Http\Request;
 use Market\Http\Controllers\Controller;
+use Market\Models\Product\Producto;
+use Market\Models\Product\Marca;
 
 class MarcaController extends Controller
 {
@@ -15,40 +17,24 @@ class MarcaController extends Controller
     public function index()
     {
           //crear el objeto marcas a partir del modelo
-          $marcas = \Market\Models\Product\Marca::all();
-
+          $marcas = Marca::all();
           //retornar vista
-          return view('marcas\marcas')->with('marcas', $marcas);
+          return view('marcas/index')->with('marcas', $marcas);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
-        return "Aquí va el formulario de las nuevas marcas";
+        return view('marcas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
+        Marca::create($request->all());
+        return redirect()->route('marcas.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -63,6 +49,8 @@ class MarcaController extends Controller
     public function edit($id)
     {
         //
+        $marcas = Marca::FindOrFail($id);
+        return view('marcas.edit', array('marcas'=>$marcas));
     }
 
     /**
@@ -75,6 +63,11 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $marcas = Marca::FindOrFail($id);
+        $input = $request->all();
+        $marcas->fill($input)->save();
+
+        return redirect()->route('marcas.index');
     }
 
     /**

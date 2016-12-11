@@ -11,13 +11,6 @@
   <div class="row">
     <div class="col-md-8">
 
-       <div class="panel panel-default">
-         <div class="panel-heading">
-            Lista
-            <p class="navbar-text navbar-right" style=" margin-top: 1px;">
-               <button type="button" class="btn btn-warning navbar-btn" style="margin-bottom: 1px; margin-top: -5px;margin-right: 8px;padding: 3px 20px;">Nuevo</button>
-            </p>
-          </div>
          <div class="panel-body">
 
            {!!Form::open(['route'=>'productos.store','method'=>'POST'])!!}
