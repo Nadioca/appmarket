@@ -35,7 +35,10 @@
                      <td>{{$producto->producto}}</td>
                      <td>{{$producto->precio}}€</td>
                      <td>{{$producto->marca}}</td>
-                     <td><a href="{{route('productos.edit',$producto->id)}}"><img src="img\editar.png" alt="[Editar]" style="width:25px;height:25px;"></td>
+                     <td>
+                       <a href="{{route('productos.edit',$producto->id)}}"><img src="img\editar.png" alt="[Editar]" style="width:25px;height:25px;">
+                         <a href="{{route('productos.show',$producto->id)}}"><img src="img\DeleteRed.png" alt="[Eliminar]" style="width:25px;height:25px;">
+                     </td>
                   </tr>
 
                   @endforeach

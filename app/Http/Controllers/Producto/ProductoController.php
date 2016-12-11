@@ -56,6 +56,8 @@ class ProductoController extends Controller
     public function show($id)
     {
         //
+        $productos = Producto::FindOrFail($id);
+        return view('productos.show')->with('productos',$productos);
     }
 
     /**
@@ -99,5 +101,8 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         //
+          $productos = Producto::FindOrFail($id);
+          $productos->delete();
+          return redirect()->route('productos.index');
     }
 }
