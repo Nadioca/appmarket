@@ -38,6 +38,8 @@ class MarcaController extends Controller
     public function show($id)
     {
         //
+        $marcas = Marca::FindOrFail($id);
+        return view('marcas.show')->with('marcas',$marcas);
     }
 
     /**
@@ -79,5 +81,8 @@ class MarcaController extends Controller
     public function destroy($id)
     {
         //
+        $marcas = Marca::FindOrFail($id);
+        $marcas->delete();
+        return redirect()->route('marcas.index');
     }
 }

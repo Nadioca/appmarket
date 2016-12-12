@@ -36,6 +36,7 @@
                      <td>{{$marca->nombre}}</td>
                      <td>
                        <a href="{{route('marcas.edit',$marca->id)}}"><img src="img\editar.png" alt="[Editar]" style="width:25px;height:25px;">
+                       <a href="{{route('marcas.show',$marca->id)}}"><img src="img\DeleteRed.png" alt="[Eliminar]" style="width:25px;height:25px;">
 
                      </td>
                   </tr>
