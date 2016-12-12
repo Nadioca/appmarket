@@ -15,3 +15,14 @@
   <strong>{{Session::get('delete')}}</strong>
 </div>
 @endif
+
+@if (count($errors)>0)
+  <div class="alert alert-danger" role="alert" style="margin-top:70px">
+    <strong>Errores:</strong>
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif

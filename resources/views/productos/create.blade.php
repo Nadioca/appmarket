@@ -4,6 +4,8 @@
 
 @section('content')
 
+  @include('partials.messages')
+
   <div class="page-header" style="margin-top:70px">
     <h1>Nuevo producto</h1>
   </div>
