@@ -11,6 +11,8 @@
    <div class="row">
      <div class="col-md-8">
 
+       @include('partials.messages')
+
         <div class="panel panel-default">
           <div class="panel-heading">
              Lista
@@ -45,6 +47,10 @@
                </tbody>
 
              </table>
+
+             <div class="text-center">
+               {!!$productos->links()!!}
+             </div>
 
           </div>
         </div>

@@ -7,6 +7,9 @@ use Market\Http\Controllers\Controller;
 use Market\Models\Product\Producto;
 use Market\Models\Product\Marca;
 
+//mensaje flash
+use Session;
+
 class ProductoController extends Controller
 {
     /**
@@ -18,7 +21,8 @@ class ProductoController extends Controller
     {
       //creamos el array de productos a partir del modelo
       $productos = Producto::
-          select('productos.id','productos.nombre as producto','precio','marcas.nombre as marca')->join('marcas','marcas.id','=','productos.marca_id')->get();
+          select('productos.id','productos.nombre as producto','precio','marcas.nombre as marca')->join('marcas','marcas.id','=','productos.marca_id')->paginate(5);
+          //->get(); cambio el get por el paginate;
       return View('productos/index')->with('productos',$productos);
     }
 
@@ -44,6 +48,8 @@ class ProductoController extends Controller
     {
         //esta parte es para guardar un producto nuevo
         Producto::create($request->all());
+        //cuando guarde un producto, envie un mensaje
+        Session::flash('save','Se ha creado correctamente');
         return redirect()->route('productos.index');
     }
 
@@ -88,7 +94,7 @@ class ProductoController extends Controller
       $productos = Producto::FindOrFail($id);
       $input = $request->all();
       $productos->fill($input)->save();
-
+      Session::flash('update','Se ha actualizado correctamente');
       return redirect()->route('productos.index');
     }
 
@@ -103,6 +109,7 @@ class ProductoController extends Controller
         //
           $productos = Producto::FindOrFail($id);
           $productos->delete();
+          Session::flash('delete','Se ha eliminado correctamente');
           return redirect()->route('productos.index');
     }
 }
